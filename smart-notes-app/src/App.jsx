@@ -6,15 +6,20 @@ import { useState } from 'react'
 function App() {
 
 const [notes, setNote] = useState([]);
+
 function addNote(text){
   setNote([...notes, text]);
+}
+
+function deleteNote(index){
+  setNote(notes.filter((note,i)=>i!==index));
 }
 
   return (
     <div>
       <h1>Smart Notes</h1>
       <NoteInput addNote={addNote}/>
-      <NoteList notes={notes}/>
+      <NoteList notes={notes} deleteNote={deleteNote}/>
     </div>
   )
 }
