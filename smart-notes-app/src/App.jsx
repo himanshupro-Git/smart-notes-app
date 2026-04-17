@@ -1,13 +1,17 @@
 import './App.css'
 import NoteInput from './components/NoteInput'
 import NoteList from './components/NoteList'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function App() {
 
 const [notes, setNote] = useState([]);
 
 function addNote(text){
+  if(notes.includes(text)){
+    alert("It already exits in the list");
+    return;
+  }
   setNote([...notes, text]);
 }
 
